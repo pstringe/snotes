@@ -7,7 +7,8 @@ const useStyles = makeStyles({
 });
 
 const Sidebar = () => {
-    return (  );
+    const classes = useStyles();
+    return ( <></> );
 }
  
 export default Sidebar;

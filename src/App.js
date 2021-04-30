@@ -1,11 +1,11 @@
-import logo from './logo.svg';
-import './App.css';
 import {useEffect, useState} from 'react'
 import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
 import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import 'fontsource-roboto';
 import firebase from 'firebase';
+import Editor from './Editor';
+import Sidebar from './Sidebar';
 
 const useStyles = makeStyles({
 
@@ -31,8 +31,13 @@ function App() {
   
 
   return (
-    <Grid className="App">
-         
+    <Grid container className="App">
+        <Grid item container md={3}>
+          <Sidebar/>
+        </Grid>
+        <Grid item container md={9}>
+          <Editor/>
+        </Grid>
     </Grid>
   );
 }
