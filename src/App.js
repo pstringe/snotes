@@ -1,24 +1,39 @@
 import logo from './logo.svg';
 import './App.css';
+import {useEffect, useState} from 'react'
+import {BrowserRouter as Router, Switch, Route, Link} from 'react-router-dom'
+import { Grid } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
+import 'fontsource-roboto';
+import firebase from 'firebase';
+
+const useStyles = makeStyles({
+
+});
 
 function App() {
+  const [selectedNoteIndex, setSelectedNoteIndex] = useState(null);
+  const [selectedNote, setSelectedNote] = useState(null);
+  const [notes, setNotes] = useState(null);
+  
+  useEffect(() => {
+    firebase.firestore().collection('notes').onSnapshot(serverUpdate =>{
+      const notes = serverUpdate.docs.map((doc) => {
+        const data = doc.data();
+        data['id'] = doc.id;
+        return data;
+      });
+      setNotes(cur => notes);
+      console.log(notes);
+    });
+    
+  }, []);
+  
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Grid className="App">
+         
+    </Grid>
   );
 }
 

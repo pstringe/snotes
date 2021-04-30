@@ -3,11 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-// Firebase App (the core Firebase SDK) is always required and
-// must be listed before other Firebase SDKs
 import firebase from "firebase/app";
-
-// Add the Firebase services that you want to use
 import "firebase/auth";
 import "firebase/firestore";
 
@@ -21,8 +17,8 @@ const firebaseConfig = {
   measurementId: "G-J5105C37RM"
 };
 
-// Initialize Firebase
 firebase.initializeApp(firebaseConfig);
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
